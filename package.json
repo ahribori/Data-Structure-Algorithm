@@ -1,0 +1,16 @@
+{
+  "name": "data_structure_and_algorithm",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon --exec babel-node src/index.js --watch src"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-preset-env": "^1.4.0",
+    "node-babel": "^0.1.2"
+  }
+}
