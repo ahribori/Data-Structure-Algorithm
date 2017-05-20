@@ -1,4 +1,4 @@
-export default class CircularQueue {
+export default class LinearQueue {
 	constructor(_size) {
 		/**
 		 * 배열의 크기
@@ -11,21 +11,9 @@ export default class CircularQueue {
 		 * 빈 칸을 하나 마련한다 (원형 큐의 핵심)
 		 * @type {Array}
 		 */
-		this.data = new Array(this.size + 1);
-
-		/**
-		 * Rear는 개념적으로 데이터가 들어오는 부분이다.
-		 * 데이터가 삽입될 때 마다 1씩 증가하며, Size보다 커질 수 없다.
-		 * @type {number}
-		 */
-		this.rear = 0;
-
-		/**
-		 * Front는 개념적으로 데이터가 삭제되는 부분이다.
-		 * 데이터가 삭제될 때 마다 1씩 증가하며, Size보다 커질 수 없다.
-		 * @type {number}
-		 */
-		this.front = 0;
+		this.data = new Array(this.size);
+		this.front = -1;
+		this.rear = -1;
 	}
 
 	/**
@@ -34,28 +22,39 @@ export default class CircularQueue {
 	 */
 	enqueue(item) {
 		if (!this.isFull()) {
-			// 리어에 아이템을 삽입한다.
+			this.rear++;
 			this.data[this.rear] = item;
-			// 아이템을 삽입했으므로 리어를 다음칸으로 지정한다.
-			this.rear = (this.rear + 1) % (this.size + 1);
 		} else {
 			console.log('Queue is full.');
 		}
-	};
+	}
 
 	/**
 	 * 큐에서 원소를 삭제
 	 */
 	dequeue() {
 		if (!this.isEmpty()) {
-			// 프론트 다음칸의 아이템을 삭제한다.
+			this.front++;
 			this.data[this.front] = undefined;
-
-			// 아이템을 삭제했으므로 프론트를 다음칸으로 지정한다.
-			this.front = (this.front + 1) % (this.size + 1);
+			this.reArrange();
 		} else {
 			console.log('Queue is empty.');
 		}
+	}
+
+	/**
+	 * 큐에 잉여 공간이 없도록 다시 정렬
+	 */
+	reArrange() {
+		const tempData =  new Array(this.size);
+		let k = 0;
+		for (let i = this.front; i < this.rear; i++) {
+			tempData[k] = this.data[i + 1];
+			k++;
+		}
+		this.front = -1;
+		this.rear = k - 1;
+		this.data = tempData;
 	}
 
 	/**
@@ -63,7 +62,7 @@ export default class CircularQueue {
 	 * @returns {boolean}
 	 */
 	isEmpty() {
-		return this.front === this.rear;
+		return this.rear === this.front;
 	}
 
 	/**
@@ -71,7 +70,7 @@ export default class CircularQueue {
 	 * @returns {boolean}
 	 */
 	isFull() {
-		return (this.rear + 1) % (this.size + 1) === this.front % (this.size + 1);
+		return this.rear + 1 === this.size;
 	}
 
 	/**
@@ -86,7 +85,7 @@ export default class CircularQueue {
 	 * 큐 초기화
 	 */
 	clear() {
-		this.data = new Array(this.size + 1);
+		this.data = new Array(this.size);
 	}
 
 	/**

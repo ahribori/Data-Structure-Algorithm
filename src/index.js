@@ -1,4 +1,10 @@
 // import Stack from './data_structure/Stack';
+
+
+/**
+ * 링크드리스트
+ */
+
 // import LinkedList from './data_structure/LinkedList';
 //
 // const linkedList = new LinkedList();
@@ -23,9 +29,44 @@
 // }
 // console.log(result);
 
-import CircularQueue from './data_structure/CircularQueue';
 
-const queue = new CircularQueue(10);
+/**
+ * 원형 큐
+ */
+
+// import CircularQueue from './data_structure/CircularQueue';
+//
+// const queue = new CircularQueue(10);
+//
+// queue.enqueue(1);
+// queue.enqueue(2);
+// queue.enqueue(3);
+// queue.enqueue(4);
+// queue.enqueue(5);
+// queue.enqueue(6);
+// queue.enqueue(7);
+// queue.enqueue(8);
+// queue.enqueue(9);
+// queue.enqueue(10);
+// queue.dequeue(); //1
+// queue.dequeue(); //2
+// queue.dequeue(); //3
+// queue.dequeue(); //4
+// queue.dequeue(); //5
+// queue.dequeue(); //6
+// queue.dequeue(); //7
+// queue.dequeue(); //8
+// queue.dequeue(); //9
+//
+// console.log(queue.peek());
+
+
+/**
+ * 선형 큐
+ */
+import LinearQueue from './data_structure/LinearQueue';
+
+const queue = new LinearQueue(6);
 
 queue.enqueue(1);
 queue.enqueue(2);
@@ -33,18 +74,12 @@ queue.enqueue(3);
 queue.enqueue(4);
 queue.enqueue(5);
 queue.enqueue(6);
-queue.enqueue(7);
-queue.enqueue(8);
-queue.enqueue(9);
-queue.enqueue(10);
-queue.dequeue(); //1
-queue.dequeue(); //2
-queue.dequeue(); //3
-queue.dequeue(); //4
-queue.dequeue(); //5
-queue.dequeue(); //6
-queue.dequeue(); //7
-queue.dequeue(); //8
-queue.dequeue(); //9
+queue.dequeue();
+queue.dequeue();
+queue.dequeue();
+queue.dequeue();
+queue.dequeue();
 
-console.log(queue.peek());
+
+
+console.log(queue);
