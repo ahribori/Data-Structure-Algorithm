@@ -1,3 +1,3 @@
-import fibo from './algorithm/fibonacci_non_recursive';
+import hanoi from './algorithm/hanoi_recursive';
 
-console.log(fibo(3));
+hanoi(4, 1, 3);
