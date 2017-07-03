@@ -1,14 +1,5 @@
-const print = obj => { console.log(JSON.stringify(obj, null, 4)) }
-import Heap from './data_structure/Heap';
-const heap = new Heap();
+const print = obj => { console.log(JSON.stringify(obj, null, 4)) };
+import Quicksort from './algorithm/sort/Quicksort';
 
-heap.insert(60);
-heap.insert(50);
-heap.insert(30);
-heap.insert(20);
-heap.insert(10);
-heap.insert(22);
-heap.insert(80);
-
-heap.print();
+console.log(new Quicksort([18, 15, 23, 28, 52, 59, 13]));
 
